@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kanister-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: kanister
+  template:
+    metadata:
+      labels:
+        name: kanister
+    spec:
+     serviceAccountName: kanister-new
+     containers:
+     - name: kanister
+       image: kanisterio/kanister-kubectl:1.18

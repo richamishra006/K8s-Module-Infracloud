@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: nginx-daemonset
+  namespace: default
+spec:
+  selector: # Selector
+    matchLabels: 
+      name: nginx-daemonset
+  template: # Pod Template
+    metadata:
+      labels:
+        name: nginx-daemonset
+    spec:
+      #tolerations: # Tolerations
+      #- key: node-role.kubernetes.io/master
+        #effect: NoSchedule
+      containers: # Container Details
+      - name: nginx
+        image: nginx
+
